@@ -10,9 +10,9 @@
     <link rel="apple-touch-icon" href="{% static 'core/img/apple-icon.png' %}">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
 
+    <link rel="stylesheet" href="{% static 'core/css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/templatemo.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/custom.css' %}">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -29,9 +29,9 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="">contacto@mypets.cl</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="">2 1234 5678</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -64,13 +64,13 @@
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                            <a class="nav-link" href="{% url 'shop' %}">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+                            <a class="nav-link" href="{% url 'contact' %}">Contáctanos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
                         </li>
                     </ul>
                 </div>
@@ -92,6 +92,7 @@
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        {% comment %} AQUI TENEMOS QUE LISTAR LA CANTIDAD DE PRODUCTOS QUE POSEE EN EL CARRITO EL CLIENTE {% endcomment %}
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                     </a>
                 </div>
@@ -107,44 +108,39 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">MyPets</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
-                            123 Consectetur at ligula 10660
+                            Avenida Concha Y Toro, Av. San Carlos 1340
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a class="text-decoration-none" href="tel:010-020-0340">2 1234 5678</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a class="text-decoration-none" href="mailto:info@company.com">contacto@mypets.cl</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Productos</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                        {% for aux in listatipoproductos %}
+                            <li><a class="text-decoration-none">{{ aux.descripcion }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Más información</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Home</a></li>
-                        <li><a class="text-decoration-none" href="#">About Us</a></li>
-                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'index' %}">Home</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'about' %}">Sobre nosotros</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'shop' %}">Tiendas</a></li>
+                        <li><a class="text-decoration-none" href="{% url 'contact' %}">Contactos</a></li>
                     </ul>
                 </div>
 
@@ -185,8 +181,7 @@
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                            Copyright &copy; 2023 Nicolás Canales | Benjamín Guajardo 
                         </p>
                     </div>
                 </div>
