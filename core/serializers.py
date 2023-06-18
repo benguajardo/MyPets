@@ -6,16 +6,17 @@ class TipoProductoSerializers(serializers.ModelSerializer):
         model = TipoProducto
         fields = '__all__'
 
-class ProductoSerializers(serializers.ModelSerializer):
-    #AGREGAMOS LAS CLAVES FORÁNEAS
-    tipo = TipoProductoSerializers(read_only=True)
-    class Meta:
-        model = Producto
-        fields = '__all__'
-
 class MarcaProductoSerializers(serializers.ModelSerializer):
     class Meta:
         model = MarcaProducto
+        fields = '__all__'
+
+class ProductoSerializers(serializers.ModelSerializer):
+    #AGREGAMOS LAS CLAVES FORÁNEAS
+    tipo = TipoProductoSerializers(read_only=True)
+    marca = MarcaProductoSerializers(read_only=True)
+    class Meta:
+        model = Producto
         fields = '__all__'
 
 class MascotaSerializers(serializers.ModelSerializer):

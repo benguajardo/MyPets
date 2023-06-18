@@ -13,7 +13,7 @@ urlpatterns = [
     path('',index, name="index"),
     path('shop',shop, name="shop"),
     
-    path('single/',single, name="single"),
+    path('single/<int:id>/',single, name="single"),
     path('contact/',contact, name="contact"),
     path('about/',about, name="about"),
     path('api/', include(router.urls)),

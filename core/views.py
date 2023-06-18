@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import *
 from django.contrib import messages
@@ -15,8 +15,6 @@ def about(request):
 def contact(request):
     return render(request, 'core/contact.html')
 
-def single(request):
-    return render(request, 'core/single.html')
 
 def about(request):
     return render(request, 'core/about.html')
@@ -28,6 +26,15 @@ def index(request):
         'listaproductos' : productos,
     }
     return render(request,'core/index.html',data)
+
+def single(request,id):
+    respuesta = requests.get('http://127.0.0.1:8000/api/productos/')
+    productos = respuesta.json()
+    producto = get_object_or_404(Producto, id=id)
+    data = {
+        'listaproductos' : productos,
+    }
+    return render(request, 'core/single.html', {'producto':producto}, data)
 
 def shop(request):
     respuesta = requests.get('http://127.0.0.1:8000/api/productos/')
