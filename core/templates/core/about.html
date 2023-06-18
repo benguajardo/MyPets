@@ -18,22 +18,27 @@
             </form>
         </div>
     </div>
-
+    
 
 
     <section class="bg-success py-5">
         <div class="container">
             <div class="row align-items-center py-5">
                 <div class="col-md-8 text-white">
-                    <h1>About Us</h1>
+                    <h1>Acerca de nosotros</h1>
+                    
+                        {% for aux in listamarcas %}
+                        <p>{{ aux.descripcion }}</p>
+                        {% endfor %}
+                    
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        MyPets es una tienda de accesorios para mascotas que nació para ayudar a una fundación sin fines de lucro.
+                        Puedes aportar con una donación voluntaria mensual, la cuál irá directamente a la fundación y recibirás
+                        un 5% de descuento en todas tus compras. 
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="{% static 'core/img/about-hero.svg' %}" alt="About Hero">
+                    <img src="{% static 'core/img/logo.png' %}" style="height: 200px;" alt="About Hero">
                 </div>
             </div>
         </div>
@@ -44,10 +49,9 @@
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Our Services</h1>
+                <h1 class="h1">Nuestros servicios</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
+                    MyPets se compromete a dar los siguientes servicios:
                 </p>
             </div>
         </div>
@@ -56,7 +60,7 @@
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fa fa-truck fa-lg"></i></div>
-                    <h2 class="h5 mt-4 text-center">Delivery Services</h2>
+                    <h2 class="h5 mt-4 text-center">Despacho a domicilio</h2>
                 </div>
             </div>
 
@@ -70,14 +74,14 @@
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center">Promotion</h2>
+                    <h2 class="h5 mt-4 text-center">5% de descuento a usuarios suscritos</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fa fa-user"></i></div>
-                    <h2 class="h5 mt-4 text-center">24 Hours Service</h2>
+                    <h2 class="h5 mt-4 text-center">Servicio de 24 horas</h2>
                 </div>
             </div>
         </div>
@@ -89,10 +93,9 @@
         <div class="container my-4">
             <div class="row text-center py-3">
                 <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Our Brands</h1>
+                    <h1 class="h1">Nuestras Marcas</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        Lorem ipsum dolor sit amet.
+                        Trabajamos con las siguientes marcas:
                     </p>
                 </div>
                 <div class="col-lg-9 m-auto tempaltemo-carousel">
@@ -115,16 +118,16 @@
                                     <div class="carousel-item active">
                                         <div class="row">
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_01.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/Nice.png' %}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_02.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/Nacoste.jpg' %}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_03.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/Jodran.jpg' %}" alt="Brand Logo"></a>
                                             </div>
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_04.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/Didadas.png' %}" alt="Brand Logo"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -133,18 +136,11 @@
                                     <!--Second slide-->
                                     <div class="carousel-item">
                                         <div class="row">
+                                            {% for aux in listamarcas %}
                                             <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_01.png' %}" alt="Brand Logo"></a>
+                                                <a href="#"><img class="img-fluid brand-img" src="{{ aux.imagen }}" alt="Brand Logo"></a>
                                             </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_02.png' %}" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_03.png' %}" alt="Brand Logo"></a>
-                                            </div>
-                                            <div class="col-3 p-md-5">
-                                                <a href="#"><img class="img-fluid brand-img" src="{% static 'core/img/brand_04.png' %}" alt="Brand Logo"></a>
-                                            </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                     <!--End Second slide-->
