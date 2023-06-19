@@ -65,8 +65,9 @@
                                 <h1 class="h1 text-success"><b>{{ aux.nombre }}</b></h1>
                                 <h3 class="h3">{{ aux.descripcion }}</h3>
                                 <p>
-                                    <h4 class="h3">Marca: {{ aux.marca.descripcion }}</h4>
+                                    <h4 class="h3">Marca: {{ aux.marca.descripcion }} <img src="{{ aux.marca.imagen }}" style="height: 50px" srcset=""></h4>
                                 </p>
+                                <a class="btn btn-success" href="{% url 'single' aux.id %}">Ver Producto</a>
                             </div>
                         </div>
                     </div>
@@ -102,7 +103,7 @@
                     <div class="card h-100">
                         {% if aux.imagen %}
                         <a href="">
-                            <img src="{{ aux.imagen }}" style="height: 400px;" class="card-img-top" alt="...">
+                            <img src="{{ aux.imagen }}" style="height: 300px;" class="card-img-top" alt="...">
                         </a>
                         {% else %}
                         <a href="{% url 'single' aux.id %}">
@@ -134,7 +135,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-3 p-5 mt-3">
-                <a href="#"><img src="{% static 'core/img/perro.jpg' %}" style="height: 235px;" class="rounded-circle img-fluid border"></a>
+                <a href="#"><img src="{% static 'core/img/perro.jpg' %}"  class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">Perros</h5>
                 <p class="text-center"><a class="btn btn-success" href="{% url 'shop' %}">Ver productos</a></p>
             </div>
@@ -144,16 +145,15 @@
                 <p class="text-center"><a class="btn btn-success" href="{% url 'shop' %}">Ver productos</a></p>
             </div>
             <div class="col-12 col-md-3 p-5 mt-3">
-                <a href="#"><img src="{% static 'core/img/huron.jpg' %}" style="height: 235px;" class="rounded-circle img-fluid border"></a>
+                <a href="#"><img src="{% static 'core/img/huron.jpg' %}"  class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Hurones</h2>
                 <p class="text-center"><a class="btn btn-success" href="{% url 'shop' %}">Ver productos</a></p>
             </div>
             <div class="col-12 col-md-3 p-5 mt-3">
-                <a href="#"><img src="{% static 'core/img/rata-novia' %}" style="height: 235px;" class="rounded-circle img-fluid border"></a>
+                <a href="#"><img src="{% static 'core/img/rata-novia' %}" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3">Ratones</h2>
                 <p class="text-center"><a class="btn btn-success" href="{% url 'shop' %}">Ver productos</a></p>
             </div>
         </div>
     </section>
-
 {% endblock %}
