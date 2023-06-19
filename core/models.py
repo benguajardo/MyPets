@@ -68,4 +68,15 @@ class CarritoCliente(models.Model):
         for aux in self.items.all():
             total += aux.subtotal()
         return total
+
+class EstadoDespacho(models.Model):
+    descripcion = models.CharField(max_length=11)
+    def __str__(self):
+        return self.descripcion
     
+class DespachoCliente(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    estado = models.ForeignKey(EstadoDespacho, on_delete=models.CASCADE, default = 1)
+    numerocompra = models.ForeignKey(Boleta, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.descripcion

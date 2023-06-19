@@ -11,15 +11,25 @@ import requests
 
 def about(request):
     respuesta = requests.get('http://127.0.0.1:8000/api/marcaproductos/')
-    productos = respuesta.json()
+    marca = respuesta.json()
     data = {
-        'listamarcas' : productos,
+        'listamarcas' : marca,
     }
     return render(request,'core/about.html',data)
 
 def contact(request):
     return render(request, 'core/contact.html')
 
+def administracion(request):
+    respuesta = requests.get('http://127.0.0.1:8000/api/productos/')
+    respuesta2 = requests.get('http://127.0.0.1:8000/api/usuarios/')
+    productos = respuesta.json()
+    usuarios = respuesta2.json()
+    data = {
+        'listaproductos' : productos,
+        'listausuarios' : usuarios,
+    }
+    return render(request,'core/administracion.html',data)
 
 def about(request):
     return render(request, 'core/about.html')
@@ -71,7 +81,7 @@ def suscripcion(request):
     return render(request, 'core/suscripcion.html')
 
 def login(request):
-    return render(request, 'core/login.html')
+    return render(request, 'registration/login.html')
 
 def salir(request):
     logout(request)
@@ -186,3 +196,7 @@ class MarcaViewset(viewsets.ModelViewSet):
 class MascotaViewset(viewsets.ModelViewSet):
     queryset= Mascota.objects.all()
     serializer_class = MascotaSerializers
+
+class UserViewset(viewsets.ModelViewSet):
+    queryset= User.objects.all()
+    serializer_class = UserSerializers
