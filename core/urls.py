@@ -7,6 +7,7 @@ router.register('productos', ProductoViewset)
 router.register('tipoproductos', TipoProductoViewset)
 router.register('marcaproductos', MarcaViewset)
 router.register('mascotaproductos', MascotaViewset)
+router.register('usuarios', UserViewset)
 
 urlpatterns = [
     # API
@@ -18,6 +19,9 @@ urlpatterns = [
     path('contact/',contact, name="contact"),
     path('about/',about, name="about"),
     path('api/', include(router.urls)),
+    path('administracion/', administracion, name="administracion"),
+    path('login/', login, name="login"),
+
     # path('productos.html', productos, name="productos"),
     # path('productosapi/', productosapi, name="productosapi"),
     # path('descripcion.html', descripcion, name="descripcion"),

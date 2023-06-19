@@ -8,6 +8,7 @@ class ProductoForm(ModelForm):
     stock = forms.IntegerField(min_value=0,widget=forms.NumberInput(attrs={"placeholder":"Ingrese Stock:"}))
     descripcion = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Ingrese Descripcion:"}))
     destacado = forms.BooleanField()
+    carrusel = forms.BooleanField()
     class Meta:
         model = Producto
         fields = '__all__'
@@ -32,3 +33,10 @@ class UsuarioForm(ModelForm):
 class Pago(ModelForm):
     class Meta:
         fields = '__all__'
+
+class LoginForm(ModelForm):
+    usuario = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Ingrese usuario:"}))
+    contrasena = forms.CharField(widget=forms.TextInput(attrs={"placeholder":"Ingrese contraseña:"}))
+    class Meta:
+        model = User
+        fields = ['usuario','contrasena']

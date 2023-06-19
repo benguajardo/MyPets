@@ -24,6 +24,10 @@ class MascotaSerializers(serializers.ModelSerializer):
         model = Mascota
         fields = '__all__'
 
+class UserSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 #SERIALIZER - VIEWSET - URL
 
 
