@@ -91,9 +91,15 @@
                         <div class="card mb-4 product-wap rounded-0" style="height: 450px;">
                             <div class="card rounded-0">
                                 {% if aux.imagen %}
-                                <a href="">
-                                    <img class="card-img rounded-0 img-fluid" style="height: 250px;" src="{{ aux.imagen }}">
-                                </a>
+                                    {% if aux.stock > 0 %}
+                                    <a href="">
+                                        <img class="card-img rounded-0 img-fluid" style="height: 250px;" src="{{ aux.imagen }}">
+                                    </a>
+                                    {% else %}
+                                    <a href="">
+                                        <img class="card-img rounded-0 img-fluid" style="height: 250px; filter: grayscale();" src="{{ aux.imagen }}">
+                                    </a>
+                                    {% endif %}
                                 {% else %}
                                 <a href="">
                                     <img class="card-img rounded-0 img-fluid" style="height: 250px;" src="{% static 'core/img/Default2.png' %}">
@@ -110,6 +116,11 @@
                                 <a href="{% url 'single' aux.id %}" class="h2" style="text-decoration: solid; ">{{ aux.nombre }}</a>
                                 <p class="text-center mb-0">Marca: {{ aux.marca.descripcion }}</p>
                                 <p class="text-center mb-0">$ {{ aux.precio|intcomma }}</p>
+                                {% if aux.stock > 0 %}
+                                <p class="text-center mb-0">Stock disponible: {{ aux.stock }}</p>
+                                {% else %}
+                                <p class="text-center mb-0" style="color: red;">Producto sin stock</p>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
