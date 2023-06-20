@@ -4,7 +4,7 @@ from .models import *
 
 #Para que en el admin se visualice como tabla
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['nombre','precio','descripcion','tipo','stock','imagen','vigente','destacado']
+    list_display = ['nombre','precio','descripcion','tipo','stock','imagen','vigente','destacado','carrusel']
     search_fields = ['nombre']
     list_per_page: 10
     list_filter = ['tipo']

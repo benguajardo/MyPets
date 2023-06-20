@@ -132,10 +132,10 @@ def borrar_carrito(request, id):
     carritoprod.delete()
 
     return redirect(to='carrito')
-                   #VISTAS DEL CARRO
+                                            #VISTAS DEL CARRO
 
-                   #CRUD PRODUCTOS
-def agregar(request):
+                                            #CRUD PRODUCTOS
+def agregar_producto(request):
     data = {
         'form' : ProductoForm()
     }
@@ -145,9 +145,9 @@ def agregar(request):
             formulario.save() #COMMIT
             #data['msj'] = 'Producto guardado correctamente!'
             messages.success(request, "Producto almacenado correctamente")
-    return render(request,'core/agregar.html',data)
+    return render(request,'core/agregar_producto.html',data)
 
-def modificar(request,id):
+def modificar_producto(request,id):
     producto = Producto.objects.get(id=id)
     data = {
         'form' : ProductoForm(instance=producto)
@@ -158,7 +158,7 @@ def modificar(request,id):
             formulario.save()
             messages.success(request, "Producto actualizado correctamente")
             data['form'] = formulario
-    return render(request, 'core/modificar.html',data)
+    return render(request, 'core/modificar_producto.html',data)
 
 def delete(request,id):
     producto = Producto.objects.get(id=id) # BUSCAMOS UN PRODUCTO POR SU ID

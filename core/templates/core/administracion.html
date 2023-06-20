@@ -20,102 +20,102 @@
         </div>
     </div>
 
-
-
-    <!-- Open Content -->
+    <!--Carrusel completo-->
     <section class="py-5">
         <div class="container">
             <div class="row text-left p-2 pb-3">
-                <h4>Productos del sistema.</h4>
+                <h1 style="text-align: center;">Menú de Administración.</h1>
             </div>
 
             <!--Start Carousel Wrapper-->
-            <div id="carousel-related-product">
-                {% for prod in listaproductos %}
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        {% if prod.stock > 0 %}
-                            {% if prod.imagen %}
-                            <img src="{{ prod.imagen }}" class="img-fluid rounded-start" alt="...">
-                            {% else %}
-                            <img src="{% static 'core/img/Default2.png' %}" class="img-fluid rounded-start" alt="...">
-                            {% endif %}
-                        {% else %}
-                            {% if prod.imagen %}
-                            <img src="{{ prod.imagen }}" style="filter: grayscale();" class="img-fluid rounded-start" alt="...">
-                            {% else %}
-                            <img src="{% static 'core/img/Default2.png' %}" class="img-fluid rounded-start" alt="...">
-                            {% endif %}
-                        {% endif %}
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                            {% if prod.stock > 0 %}
-                            <h5 class="card-title text-success">{{ prod.nombre }}</h5>
-                            {% else %}
-                            <h5 class="card-title text-danger" style="text-decoration: line-through;">{{ prod.nombre }}</h5>
-                            {% endif %}
-                            <p p class="card-text">{{ prod.descripcion }}</p>
-                            <p p class="card-text">{{ prod.tipo.descripcion }}</p>
-                            <p p class="card-text">{{ prod.marca.descripcion }}</p>
-                            {% if prod.stock == 0 %}
-                            <p class="card-text"><small style="color: red; font-weight: bold; ">Sin stock</small></p>
-                            {% else %}
-                            <p class="card-text">Stock: {{ prod.stock }}</p>
-                            {% endif %}
-                        </div>
-                      </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row text-left p-2 pb-3">
+                        <h2 style="text-align: center;">Productos del sistema.</h2>
                     </div>
-                  </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <!-- Close Content -->
-
-    <!-- Start Article -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row text-left p-2 pb-3">
-                <h4>Usuarios del sistema.</h4>
-            </div>
-
-            <!--Start Carousel Wrapper-->
-            <div id="carousel-related-product">
-                {% for usuario in listausuarios %}
-                <div class="p-2 pb-3">
-                    <div class="product-wap card rounded-0">
-                        <div class="card rounded-0">
-                            <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                <ul class="list-unstyled">
-                                    <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart">Modificar</i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h1 href="" class="h3 text-decoration-none">{{ usuario.username }}</h1>
-                            <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                {% if user.suscrito == True%}
-                                <li>
-                                    Tipo usuario: Premium
-                                </li>
+        
+                    <!--Start Carousel Wrapper-->
+                    <div id="carousel-related-product">
+                        {% for prod in listaproductos %}
+                        <div class="card mb-3" style="height: 240px; width: 640px; border-width: 1px; border-color: rgba(3, 3, 255, 0.164);">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                {% if prod.stock > 0 %}
+                                    {% if prod.imagen %}
+                                    <img src="{{ prod.imagen }}" style="width: 200px; height: 240px;" class="img-fluid rounded-start" alt="...">
+                                    {% else %}
+                                    <img src="{% static 'core/img/Default2.png' %}" class="img-fluid rounded-start" alt="...">
+                                    {% endif %}
                                 {% else %}
-                                <li>
-                                    Tipo usuario: Normal
-                                </li>
+                                    {% if prod.imagen %}
+                                    <img src="{{ prod.imagen }}" style="width: 200px; height: 240px; filter: grayscale();" class="img-fluid rounded-start" alt="...">
+                                    {% else %}
+                                    <img src="{% static 'core/img/Default2.png' %}" class="img-fluid rounded-start" alt="...">
+                                    {% endif %}
                                 {% endif %}
-                            </ul>
-                        </div>
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                    {% if prod.stock > 0 %}
+                                    <h2 class="card-title">{{ prod.nombre }}</h2>
+                                    {% else %}
+                                    <h5 class="card-title text-danger" style="text-decoration: line-through;">{{ prod.nombre }}</h5>
+                                    {% endif %}
+                                    <p p class="card-text">{{ prod.descripcion }}</p>
+                                    <p p class="card-text">Marca: {{ prod.marca.descripcion }}</p>
+                                    {% if prod.stock == 0 %}
+                                    <p class="card-text"><small style="color: rgb(255, 0, 0); font-weight: bold; ">Sin stock</small></p>
+                                    {% else %}
+                                    <p class="card-text">Stock: {{ prod.stock }}</p>
+                                    {% endif %}
+                                </div>
+                                <a ><button class="btn btn-success">Modificar</button></a>
+                                <a onclick="delete({{ aux.id }})" class="btn btn-success btn-outline-black" style="color: black;">Eliminar <img style="height: 20px;" src="{% static 'core/img/eliminar.png' %}" alt=""></a>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
+                <div class="col-md-6">
+                    <div class="row text-left p-2 pb-3">
+                        <h2 style="text-align: center;">Usuarios del sistema.</h2>
+                    </div>
+        
+                    <!--Start Carousel Wrapper-->
+                    <div id="carousel-related-product">
+                        {% for aux in listausuarios %}
+                        <div class="card mb-3" style="height: 240px; width: 640px; border-width: 1px; border-color: rgba(255, 0, 0, 0.253);">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                {% if aux.imagen %}
+                                    <img src="{{ aux.imagen }}" style="width: 200px; height: 240px;" class="img-fluid rounded-start" alt="...">
+                                {% else %}
+                                    <img src="{% static 'core/img/usuariodefault.png' %}" style="width: 200px; height: 240px;" class="img-fluid rounded-start" alt="...">
+                                {% endif %}
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nombre: {{ aux.nombre }}</h5>
+                                    <p p class="card-text">Dirección: {{ aux.direccion }}</p>
+                                    {% if aux.suscrito == True %}
+                                        <p p class="card-text">Tipo: Premium</p>
+                                    {% else %}
+                                        <p p class="card-text">Tipo: Normal</p>
+                                    {% endif %}
+                                </div>
+                                <a ><button class="btn btn-success">Modificar</button></a>
+                                <a href=""><button class="btn btn-danger">Eliminar</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>
             </div>
-
-
         </div>
     </section>
-    <!-- End Article -->
+    
 
 
     {% endblock %}
