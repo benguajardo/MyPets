@@ -166,7 +166,7 @@ def delete(request,id):
 
     return redirect(to="index")
 
-                   #ESTO DEBERIA IR A USER
+                                        #ESTO DEBERIA IR A USER
 def registrarse(request):
     data = {
         'form' : UsuarioForm()
